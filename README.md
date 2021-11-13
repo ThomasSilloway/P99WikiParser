@@ -7,7 +7,15 @@ Allow a twitch bot to accept the command !quest [itemname] and have it search th
 
 ## Current Status
 
-Parses the Goblin Warlord Beads page & prints out the text for the quest
+Parses search text & handles 4 cases:
+ - Exact match
+ - Partial Match
+ - No match, but some related results
+ - No matches at all
+
+On matches - also handles if that item has no quests
+
+Next step - Hook up with the [Streamlabs Chatbot](https://streamlabs.com/chatbot)
 
 Currently runs with Python 3.7
 
