@@ -9,6 +9,8 @@ Mode #2 Output an item url for the quest reward, so the image can pop up in OBS
 
 ## Current Status
 
+Requires Python 2.7 - because Streamlabs chatbot
+
 Parses search text & handles 4 cases:
  - Exact match
  - Partial Match

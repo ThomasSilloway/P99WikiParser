@@ -1,15 +1,15 @@
-import requests
+from requests import get
 from bs4 import BeautifulSoup
 
 
 def main(name):
     # Do search & get the item page url
     search_string = 'Goblin Warbeads' # Partial match
-    # search_string = 'Goblin beads' # match something with no quest # TODO this fails
+    # search_string = 'Goblin beads' # match something with no quest
     # search_string = 'goblin warlord beads' # exact match
     # search_string = 'asdlikfjlaksdf' # no match
     search_string = search_string.replace(' ', '+')
-    search_url = f'https://wiki.project1999.com/index.php?title=Special%3ASearch&profile=default&search={search_string}&fulltext=Search'
+    search_url = 'https://wiki.project1999.com/index.php?title=Special%3ASearch&profile=default&search={}&fulltext=Search'.format(search_string)
     webpage = get_html(search_url)
 
     item_name, item_url = parse_search_page_v2(webpage)
@@ -23,7 +23,7 @@ def main(name):
         print('Unable to continue search, try again with valid name')
         return
 
-    item_url = f'https://wiki.project1999.com{item_url}'
+    item_url = 'https://wiki.project1999.com{}'.format(item_url)
     webpage = get_html(item_url)
     if webpage is None:
         print("Failed to download webpage")
@@ -68,7 +68,7 @@ def parse_search_results(search_results_div):
         list_element = new_line.next_sibling
         link = list_element.li.div.a
         link_url = link.attrs['href']
-        return f"Partial match: {link.text}", link_url
+        return "Partial match: {}".format(link.text), link_url
 
     # If you have an exact match you get this html:
     # <b>There is a page named "<a href="/Goblin_warlord_beads" title="Goblin warlord beads" class="mw-redirect">Goblin warlord beads</a>" on this wiki.</b></p>
@@ -85,7 +85,7 @@ def parse_search_results(search_results_div):
         # Exact match will contain "There is a page named"
         if "There is a page named" in possible_link.text:
             link_url = link.attrs['href']
-            return f"Exact match: {link.text}", link_url
+            return "Exact match: {}".format(link.text), link_url
 
         # No Match, but some results will contain Create the page
         if "Create the page" in possible_link.text:
@@ -95,7 +95,7 @@ def parse_search_results(search_results_div):
             list_element = new_line.next_sibling
             link = list_element.li.div.a
 
-            return f"Closest match: {link.text}", None
+            return "Closest match: {}".format(link.text), None
 
     return None, None
 
@@ -121,7 +121,7 @@ def parse_quest(webpage):
 
 
 def get_html(url):
-    resp = requests.get(url)
+    resp = get(url)
     if resp.status_code == 200:
         return resp.text
 
