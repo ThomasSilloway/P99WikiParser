@@ -1,0 +1,24 @@
+{
+   "output_file": "settings.json",
+   "Commands": {
+    "type": "textbox",
+    "value": "!quest item_name",
+    "label": "Commands",
+    "tooltip": "Words the bot will be looking for, leave a space between each word to add more.",
+    "group": "Quest"
+  },
+  "OutputMessage": {
+    "type": "textbox",
+    "value": "$match_type: $item_name\nPossible Quests:$quest_strings",
+    "label": "Output Message",
+    "tooltip": "The output message for this command. $match_type will be PartialMatch, Exact Match, etc. $item_name will be the name that was found on the wiki. $quest_strings will be the name of the quests",
+    "group": "Quest"
+  },
+  "CommandCooldown": {
+    "type": "textbox",
+    "value": "1",
+    "label": "Command Cooldown",
+    "tooltip": "How often someone can use this command in chat",
+    "group": "Quest"
+  }
+}

@@ -21,8 +21,5 @@ On matches - also handles if that item has no quests
 
 Next step - Hook up with the [Streamlabs Chatbot](https://streamlabs.com/chatbot)
 
-Currently runs with Python 3.7
-
 Requirements: 
 - beautifulsoup4
-- requests
