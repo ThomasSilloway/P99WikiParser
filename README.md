@@ -17,9 +17,7 @@ Parses search text & handles 4 cases:
  - No match, but some related results
  - No matches at all
 
-On matches - also handles if that item has no quests
-
-Next step - Hook up with the [Streamlabs Chatbot](https://streamlabs.com/chatbot)
+On a successful item search it handles reqporting if that item has no quests
 
 Requirements: 
 - beautifulsoup4
